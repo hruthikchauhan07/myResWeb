@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hruthik M - Interactive Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-50/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-slate-800">Hruthik M</h1>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#career-match" class="nav-link text-slate-600 hover:text-indigo-600 font-medium">AI Match</a>
+                    <a href="#skills" class="nav-link text-slate-600 hover:text-indigo-600 font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-slate-600 hover:text-indigo-600 font-medium">Projects</a>
+                    <a href="#timeline" class="nav-link text-slate-600 hover:text-indigo-600 font-medium">Timeline</a>
+                    <a href="#contact" class="nav-link text-slate-600 hover:text-indigo-600 font-medium">Contact</a>
+                </nav>
+                <a href="#contact" class="md:hidden bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <section id="hero" class="container mx-auto px-6 py-16 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Proactive AI/ML & Full-Stack Developer</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                An Information Science student with certified expertise in AI/ML, full-stack development, and building agentic applications. Passionate about leveraging advanced AI infrastructure, including RAG and AI automation, to solve complex business problems.
+            </p>
+        </section>
+        
+        <section id="career-match" class="py-20 bg-indigo-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">✨ AI-Powered Career Match</h3>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Enter a job title below. Our Gemini-powered assistant will analyze my resume and explain why I'm a strong candidate for the role.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <input type="text" id="job-title-input" placeholder="e.g., AI Engineer, Full-Stack Developer" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                        <button id="analyze-fit-btn" class="gemini-btn bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 disabled:bg-indigo-400 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                            Analyze Fit
+                        </button>
+                    </div>
+                    <div id="career-match-result" class="bg-white p-6 rounded-lg border border-slate-200 min-h-[100px]">
+                        <p class="text-slate-500">Your personalized analysis will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">My Technical Toolkit</h3>
+                    <p class="text-slate-600 max-w-2xl mx-auto">This section provides an overview of my core competencies. Click any skill tag to filter the Projects and Timeline sections.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <div class="chart-container">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4 text-center md:text-left">Filter by Skill</h4>
+                        <div id="skill-tags-container" class="flex flex-wrap gap-2 justify-center md:justify-start">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">Project Showcase</h3>
+                    <p class="text-slate-600 max-w-2xl mx-auto">Key projects demonstrating my ability to apply skills to solve real-world problems. Click "Tell Me More" for an AI-generated explanation of any project.</p>
+                </div>
+                <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">Career & Education Timeline</h3>
+                     <p class="text-slate-600 max-w-2xl mx-auto">This timeline outlines my professional and educational journey, showcasing a consistent path of growth and contribution.</p>
+                </div>
+                <div id="timeline-container" class="relative max-w-3xl mx-auto">
+                    <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-200"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certs" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-2">Certifications</h3>
+                    <p class="text-slate-600 max-w-2xl mx-auto">I am committed to continuous learning and staying current with the latest advancements in AI and software engineering.</p>
+                </div>
+                <div id="certs-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact" class="bg-slate-800 text-slate-300 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold text-white mb-4">Let's Innovate Together</h3>
+            <p class="max-w-xl mx-auto mb-8">I'm actively seeking new opportunities. If you have a project in mind or think I'd be a good fit for your team, please get in touch.</p>
+            <div class="flex justify-center items-center space-x-6">
+                <a href="mailto:hruthikmnaik07@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-500 transition-colors">Email Me</a>
+                <a href="https://www.linkedin.com/" target="_blank" class="text-slate-400 hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://github.com/" target="_blank" class="text-slate-400 hover:text-white transition-colors">GitHub</a>
+            </div>
+            <p class="mt-12 text-sm text-slate-500">+91 6366685912 | Mysore, India</p>
+        </div>
+    </footer>
+
+    <dialog id="ai-modal" class="p-0 rounded-lg shadow-xl max-w-2xl w-full">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-xl font-bold text-slate-800">✨ AI-Generated Explanation</h3>
+                <button id="modal-close-btn" class="text-slate-500 hover:text-slate-800">&times;</button>
+            </div>
+            <div id="modal-content" class="text-slate-600 prose">
+                <p>Generating insights...</p>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
